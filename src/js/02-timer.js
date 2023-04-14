@@ -8,6 +8,7 @@ const minutes = document.querySelector('[data-minutes]');
 const seconds = document.querySelector('[data-seconds]');
 
 startBtn.disabled = true;
+let userDate = null;
 
 const options = {
     enableTime: true,
@@ -15,30 +16,17 @@ const options = {
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-        console.log('почему обновляется?', selectedDates[0]);   
+        console.log('selectedDates[0]', selectedDates[0]);
+        userDate = selectedDates[0];
+        console.log('userDate внутри настроеек: ', userDate)
     },
 };
 
 
-const calendar = flatpickr('#datetime-picker', options);
+flatpickr('#datetime-picker', options);
 
-console.log('как его достать? ', calendar.selectedDates[0]);
+console.log('userDate снаружи настроеек: ', userDate);
 
-
-
-
-// function dateSetting(userDate) {
-//     const start = new Date();
-//     const startTime = start.getTime();
-//     const endTime = userDate.getTime();
-//     let rangeTime = endTime - startTime;
-
-//     if (rangeTime <= 0) {
-//         window.alert('Please choose a date in the future');
-//     } else {
-//         startBtn.disabled = false;
-//     }
-// }
 
 
 
